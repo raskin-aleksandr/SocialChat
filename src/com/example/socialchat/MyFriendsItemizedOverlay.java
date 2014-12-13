@@ -52,58 +52,55 @@ public class MyFriendsItemizedOverlay extends ItemizedIconOverlay<OverlayItem> {
 		final EditText input = new EditText(mContext);
 		input.setHint("enter message");
 		message.setView(input);
-		
+
 		message.setCancelable(true);
 		message.setNegativeButton("Send", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
-//				ParseObject mess = new ParseObject("Messages");
-//
-//				mess.put("senderName", User.getInstance().getmUser().getUsername());
-//				mess.put("reciverName", item.getTitle());
-//				mess.put("message", input.getText().toString());
-//				mess.put("state", false);
-//				mess.saveInBackground(new SaveCallback() {
-//
-//					@Override
-//					public void done(ParseException e) {
-//						if (e == null) {
-//							
-//							Toast.makeText(mContext, "Message send", Toast.LENGTH_SHORT).show();
-//						} else {
-//						
-//							Toast.makeText(mContext, "Something went wrong: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-//						}
-//					}
-//				});
-				
-				
-				
+				// ParseObject mess = new ParseObject("Messages");
+				//
+				// mess.put("senderName", User.getInstance().getmUser().getUsername());
+				// mess.put("reciverName", item.getTitle());
+				// mess.put("message", input.getText().toString());
+				// mess.put("state", false);
+				// mess.saveInBackground(new SaveCallback() {
+				//
+				// @Override
+				// public void done(ParseException e) {
+				// if (e == null) {
+				//
+				// Toast.makeText(mContext, "Message send", Toast.LENGTH_SHORT).show();
+				// } else {
+				//
+				// Toast.makeText(mContext, "Something went wrong: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+				// }
+				// }
+				// });
+
 				JSONObject data;
-		        try {
-		        	data = new JSONObject();
-		            data.put("action", "com.example.socialchat");
-		            data.put("name",input.getText().toString());
-		            ParsePush push = new ParsePush();
-		            push.setChannel("A" + User.getInstance().getmUser().getObjectId());
-		            push.setData(data);
-		            push.sendInBackground(new SendCallback() {
-						
+				try {
+					data = new JSONObject();
+					data.put("action", "com.example.socialchat");
+					data.put("name", input.getText().toString());
+					ParsePush push = new ParsePush();
+					push.setChannel("A" + User.getInstance().getmUser().getObjectId());
+					push.setData(data);
+					push.sendInBackground(new SendCallback() {
+
 						@Override
 						public void done(ParseException e) {
 							if (e == null) {
 								Toast.makeText(mContext, "message sended", Toast.LENGTH_SHORT).show();
-							}
-							else {
+							} else {
 								Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
 							}
-							
+
 						}
 					});
-		        } catch (Exception e) {
-		            // TODO Auto-generated catch block
-		            e.printStackTrace();
-		        }
-				
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			}
 		});
 
