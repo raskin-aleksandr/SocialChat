@@ -2,16 +2,13 @@ package com.example.socialchat;
 
 import java.util.List;
 
-import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.OverlayItem;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.graphics.Point;
 import android.view.MotionEvent;
-import android.widget.Toast;
 
 public class MyItemizedOverlay extends ItemizedIconOverlay<OverlayItem> {
 

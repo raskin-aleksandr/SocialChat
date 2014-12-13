@@ -15,9 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParsePush;
-import com.parse.SaveCallback;
 import com.parse.SendCallback;
 
 public class MyFriendsItemizedOverlay extends ItemizedIconOverlay<OverlayItem> {
@@ -58,25 +56,25 @@ public class MyFriendsItemizedOverlay extends ItemizedIconOverlay<OverlayItem> {
 		message.setCancelable(true);
 		message.setNegativeButton("Send", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
-				ParseObject mess = new ParseObject("Messages");
-
-				mess.put("senderName", User.getInstance().getmUser().getUsername());
-				mess.put("reciverName", item.getTitle());
-				mess.put("message", input.getText().toString());
-				mess.put("state", false);
-				mess.saveInBackground(new SaveCallback() {
-
-					@Override
-					public void done(ParseException e) {
-						if (e == null) {
-							
-							Toast.makeText(mContext, "Message send", Toast.LENGTH_SHORT).show();
-						} else {
-						
-							Toast.makeText(mContext, "Something went wrong: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-						}
-					}
-				});
+//				ParseObject mess = new ParseObject("Messages");
+//
+//				mess.put("senderName", User.getInstance().getmUser().getUsername());
+//				mess.put("reciverName", item.getTitle());
+//				mess.put("message", input.getText().toString());
+//				mess.put("state", false);
+//				mess.saveInBackground(new SaveCallback() {
+//
+//					@Override
+//					public void done(ParseException e) {
+//						if (e == null) {
+//							
+//							Toast.makeText(mContext, "Message send", Toast.LENGTH_SHORT).show();
+//						} else {
+//						
+//							Toast.makeText(mContext, "Something went wrong: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+//						}
+//					}
+//				});
 				
 				
 				
@@ -91,9 +89,13 @@ public class MyFriendsItemizedOverlay extends ItemizedIconOverlay<OverlayItem> {
 		            push.sendInBackground(new SendCallback() {
 						
 						@Override
-						public void done(ParseException arg0) {
-							// TODO Auto-generated method stub
-							System.out.println(arg0);
+						public void done(ParseException e) {
+							if (e == null) {
+								Toast.makeText(mContext, "message sended", Toast.LENGTH_SHORT).show();
+							}
+							else {
+								Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
+							}
 							
 						}
 					});
