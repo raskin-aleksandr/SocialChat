@@ -41,7 +41,6 @@ public class Welcome extends Activity implements LocationListener {
 	private LocationManager mLocationManager;
 	private Location mLocation;
 
-	// private String userID;
 	private String locationID;
 
 	private ProgressDialog pd;
@@ -55,7 +54,7 @@ public class Welcome extends Activity implements LocationListener {
 		setContentView(R.layout.activity_welcome);
 
 		ParsePush.subscribeInBackground("A" + User.getInstance().getmUser().getObjectId());
-		
+
 		mMapView = (MapView) findViewById(R.id.mapview);
 		mMapView.setBuiltInZoomControls(true);
 		mMapView.getController().setZoom(16);
@@ -221,7 +220,7 @@ public class Welcome extends Activity implements LocationListener {
 						for (ParseObject parseObject : objects) {
 							ParseGeoPoint friendlocation = parseObject.getParseGeoPoint("location");
 							GeoPoint friend = new GeoPoint(friendlocation.getLatitude(), friendlocation.getLongitude());
-						
+
 							OverlayItem olItem = new OverlayItem(parseObject.getString("name"), "current friend location", friend);
 
 							Drawable newMarker = getResources().getDrawable(R.drawable.ic_communication_location_on_red);
@@ -236,7 +235,6 @@ public class Welcome extends Activity implements LocationListener {
 						System.out.println("find fuck: " + e);
 						pd.cancel();
 					}
-
 				}
 			});
 			mMapView.getOverlays().add(myFriendsItemizedOverlay);
@@ -252,19 +250,15 @@ public class Welcome extends Activity implements LocationListener {
 	@Override
 	public void onProviderDisabled(String provider) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void onProviderEnabled(String provider) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 		// TODO Auto-generated method stub
-
 	}
-
 }
