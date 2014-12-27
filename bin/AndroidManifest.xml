@@ -29,7 +29,7 @@
     <uses-permission android:name="com.example.socialchat.permission.C2D_MESSAGE" />
 
     <application
-        android:name="com.example.socialchat.MyApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -38,12 +38,11 @@
 
         <receiver android:name="com.parse.ParseBroadcastReceiver" >
         </receiver>
-        <receiver android:name="com.example.socialchat.MyReceiver" >
+        <receiver android:name=".MyReceiver" >
             <intent-filter>
                 <action android:name="com.example.socialchat" />
             </intent-filter>
         </receiver>
-        
         <receiver
             android:name="com.parse.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
@@ -91,6 +90,10 @@
         <activity
             android:name=".Welcome"
             android:label="Welcome" >
+        </activity>
+        <activity
+            android:name=".Settings"
+            android:label="@string/title_activity_settings" >
         </activity>
     </application>
 

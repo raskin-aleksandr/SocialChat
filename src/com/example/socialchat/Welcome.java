@@ -101,7 +101,7 @@ public class Welcome extends Activity implements LocationListener {
 
 			editor.putString("userID", null);
 			editor.putString("locatoinID", null);
-			System.out.println("from logput: cleared");
+			System.out.println("from logout: cleared");
 			editor.commit();
 
 			Welcome.this.finish();

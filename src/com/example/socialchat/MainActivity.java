@@ -7,7 +7,6 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -52,11 +51,6 @@ public class MainActivity extends Activity {
 		loginDialog.setContentView(R.layout.login);
 		loginDialog.setTitle("Login");
 
-//		EditText login = (EditText)findViewById(R.id.loginName);
-//		EditText password = (EditText)findViewById(R.id.loginPassword);
-//		
-//		Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Roboto-Regular.ttf"); 
-//		login.setTypeface(type);
 		
 		Button loginButton = (Button) loginDialog.findViewById(R.id.login);
 		loginButton.setOnClickListener(new OnClickListener() {
@@ -86,6 +80,7 @@ public class MainActivity extends Activity {
 									+ arg0.get("locationID"));
 							User.getInstance().setLocationID(
 									(arg0.get("locationID")).toString());
+														
 							startActivity(new Intent(getApplicationContext(),
 									Welcome.class));
 						} else {
