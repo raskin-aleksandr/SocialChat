@@ -108,6 +108,10 @@ public class Welcome extends Activity implements LocationListener {
 			startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
 			break;
+
+		case R.id.settings:
+			startActivity(new Intent(getApplicationContext(), Settings.class));
+			break;
 		}
 		return super.onOptionsItemSelected(item);
 	}

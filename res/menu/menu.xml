@@ -12,6 +12,11 @@
         android:title="Find Friends"
         />
     
+   <item 
+        android:id="@+id/settings"
+        android:title="Settings"
+        />
+    
     <item 
         android:id="@+id/logout"
         android:title="log out"/>
