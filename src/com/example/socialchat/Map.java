@@ -27,11 +27,10 @@ import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
-import com.parse.ParsePush;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-public class Welcome extends Activity implements LocationListener {
+public class Map extends Activity implements LocationListener {
 
 	private MapView mMapView;
 	private GeoPoint mGeoPoint;
@@ -53,8 +52,6 @@ public class Welcome extends Activity implements LocationListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_welcome);
 
-		ParsePush.subscribeInBackground("A" + User.getInstance().getmUser().getObjectId());
-
 		mMapView = (MapView) findViewById(R.id.mapview);
 		mMapView.setBuiltInZoomControls(true);
 		mMapView.getController().setZoom(16);
@@ -70,11 +67,14 @@ public class Welcome extends Activity implements LocationListener {
 		} else {
 			Toast.makeText(getApplicationContext(), "no gps", Toast.LENGTH_SHORT).show();
 		}
+		findMe();
+		findFriends();
+
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.menu, menu);
+		getMenuInflater().inflate(R.menu.map_menu, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -104,16 +104,22 @@ public class Welcome extends Activity implements LocationListener {
 			System.out.println("from logout: cleared");
 			editor.commit();
 
-			Welcome.this.finish();
-			startActivity(new Intent(getApplicationContext(), MainActivity.class));
+			Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+			startActivity(intent);
 
 			break;
 
 		case R.id.settings:
 			startActivity(new Intent(getApplicationContext(), Settings.class));
 			break;
+
+		case R.id.chat:
+			startActivity(new Intent(getApplicationContext(), UsersActivity.class));
+			break;
 		}
 		return super.onOptionsItemSelected(item);
+
 	}
 
 	@Override
@@ -133,6 +139,7 @@ public class Welcome extends Activity implements LocationListener {
 
 				editor.putString("userID", User.getInstance().getUserID());
 				editor.putString("locatoinID", User.getInstance().getLocationID());
+				editor.putString("userName", User.getInstance().getUserName());
 				System.out.println("from shared on stop: saved");
 				editor.commit();
 
@@ -193,18 +200,20 @@ public class Welcome extends Activity implements LocationListener {
 			Toast.makeText(getApplicationContext(), "no gps", Toast.LENGTH_SHORT).show();
 		}
 
-		mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, this);
+		mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 10, this);
 	}
 
 	public void findFriends() {
 		if (mLocation != null) {
 			pd = new ProgressDialog(this);
 			pd.setTitle("Friends");
-			pd.setMessage("Seraching for friends");
+			pd.setMessage("Searching for friends");
 			pd.setIcon(R.drawable.ic_communication_location_on_red);
 			pd.show();
 
-			mMapView.getOverlays().clear();
+			// mMapView.getOverlays().clear();
+
+			mMapView.getOverlayManager().remove(myFriendsItemizedOverlay);
 
 			ParseQuery<ParseObject> pq = ParseQuery.getQuery("location");
 			ParseGeoPoint location = new ParseGeoPoint(mLocation.getLatitude(), mLocation.getLongitude());

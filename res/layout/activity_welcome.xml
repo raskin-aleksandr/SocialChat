@@ -11,5 +11,5 @@
         android:clickable="true" >
     </org.osmdroid.views.MapView>
     
-
+    
 </RelativeLayout>

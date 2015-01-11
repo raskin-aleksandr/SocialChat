@@ -5,7 +5,11 @@
     <string name="menu_settings">Settings</string>
     <string name="cd">Content Description</string>
     <string name="title_activity_settings">Settings</string>
-    <string name="title_activity_main">title1</string>
-    
+    <string name="title_activity_main">#SocialChat</string>
+    <string name="title_activity_settings_list">Settings_list</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_chat">Users</string>
+    <string name="title_activity_messenger">Messenger</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

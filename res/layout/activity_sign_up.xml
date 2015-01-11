@@ -15,7 +15,6 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="enter your name"
-        android:typeface="serif"
         android:inputType="textPersonName" >
 
         <requestFocus />
@@ -30,7 +29,6 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:typeface="serif"
         android:hint="enter your e-mail"
         android:inputType="textEmailAddress" />
 

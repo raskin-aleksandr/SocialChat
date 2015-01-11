@@ -88,8 +88,8 @@
             android:label="Sign up" >
         </activity>
         <activity
-            android:name=".Welcome"
-            android:label="Welcome" >
+            android:name=".Map"
+            android:label="Map" >
         </activity>
         <activity
             android:name=".Settings2"
@@ -98,6 +98,24 @@
         <activity
             android:name=".Settings"
             android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".Settings_list"
+            android:label="@string/title_activity_settings_list" >
+        </activity>
+        <activity
+            android:name=".UsersActivity"
+            android:label="@string/title_activity_chat" >
+        </activity>
+
+        <service android:name="com.example.socialchat.UsersService" >
+        </service>
+        <service android:name="com.example.socialchat.MessageService" >
+        </service>
+
+        <activity
+            android:name=".Messenger"
+            android:label="@string/title_activity_messenger" >
         </activity>
     </application>
 

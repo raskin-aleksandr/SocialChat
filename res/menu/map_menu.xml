@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/chat"
+        android:icon="@drawable/ic_action_communication_quick_contacts_mail"
+        android:showAsAction="always"
+        android:title="chat">
+    </item>
+    
+    
+    
+    <item
+        android:id="@+id/findme"
+        android:showAsAction="never"
+        android:title="Find me"/>
+    <item
+        android:id="@+id/findfriends"
+        android:showAsAction="never"
+        android:title="Find Friends"/>
+    <item
+        android:id="@+id/settings"
+        android:showAsAction="never"
+        android:title="Settings"/>
+    <item
+        android:id="@+id/logout"
+        android:showAsAction="never"
+        android:title="log out"/>
+
+</menu>

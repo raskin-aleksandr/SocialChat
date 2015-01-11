@@ -23,7 +23,7 @@ public class MyReceiver extends BroadcastReceiver {
 
 			String name = json.getString("name");
 
-			Intent i = new Intent(context, Welcome.class);
+			Intent i = new Intent(context, Map.class);
 			PendingIntent pIntent = PendingIntent.getActivity(context, 0, i, 0);
 
 			Notification n = new NotificationCompat.Builder(context).setContentTitle("Received message").setContentText(name)

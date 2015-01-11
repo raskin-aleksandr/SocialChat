@@ -6,24 +6,28 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Settings extends Activity {
 
     public static final int HDR_POS1 = 0;
     public static final int HDR_POS2 = 5;
-    public static final String[] LIST = { "Characters", "The Monkey priest",
-        "Goat", "The beast of craggy island", "Chris", "Episodes",
-        "Are you right there Fr. Ted", "Speed 3", "Hell", "A Christmassy Ted" };
-    public static final String[] SUBTEXTS = { null, "He was fond of pulling books off shelves",
-        "Made famous by the tunnel of goats", "Claws as big as cups and four arses", "Stressed out sheep", null,
-        "Not a racist", "Is there anything to be said for another mass", "Off to get some heroin", "Toddy tod tod. There you are now Todd." };
+    public static final String[] LIST = {"list1", "list2" };
+    public static final String[] SUBTEXTS = { "test", "subtext2"};
 
     private static final Integer LIST_HEADER = 0;
     private static final Integer LIST_ITEM = 1;
 
+    
+    
+    
+    
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,20 @@ public class Settings extends Activity {
 
         ListView lv = (ListView)findViewById(R.id.settingsList);
         lv.setAdapter(new MyListAdapter(this));
+        
+        lv.setOnItemClickListener(new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> adapter, View v, int position, long arg3) {
+				
+				Toast.makeText(getApplicationContext(), adapter.getId(), Toast.LENGTH_SHORT).show();
+				
+				
+			}
+			
+		});
+        
+        
     }
 
     private class MyListAdapter extends BaseAdapter {
@@ -55,7 +73,7 @@ public class Settings extends Activity {
 
         @Override
         public Object getItem(int position) {
-            return position;
+        	return position;
         }
 
         @Override
